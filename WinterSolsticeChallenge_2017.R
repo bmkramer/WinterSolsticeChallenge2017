@@ -2,12 +2,14 @@
 #It attempts to assess OA availability of research output in ORCID and the references therein (1 layer deep)
 #http://chem-bla-ics.blogspot.nl/2017/11/winter-solstice-challenge-what-is-your.html
 
-#install.packages("rorcid")
-#install.packages("rjson")
-#install.packages("httpcache")
-#library(rorcid)
-#require(rjson)
-#require(httpcache)
+#user input (insert in script): ORCID DOI (in step 1), email address in the API calls (in step 1, 2 and 3)
+
+install.packages("rorcid")
+install.packages("rjson")
+install.packages("httpcache")
+library(rorcid)
+require(rjson)
+require(httpcache)
 
 #STEP 1: Get list of DOIs from ORCID
 
@@ -16,6 +18,7 @@
 #Info on how to coerce list into a dataframe: https://stackoverflow.com/questions/28526860/r-turn-list-into-dataframe
 
 #declare variable for ORCID record
+#replace example ORCID below with your own 
 #example: ORCID Bianca Kramer 0000-0002-5965-6560
 var <- c("0000-0002-5965-6560")
 
