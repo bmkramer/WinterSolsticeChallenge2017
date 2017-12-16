@@ -5,6 +5,6 @@ Egon Willighagen ([@egonw](https://github.com/egonw)) recently issued an interes
 I love winter, I love challenges and I care a lot about open science. So I decided to take this one on. Before starting, I set the following parameters for myself:
 
 - I will only use **fully open tools** (openly available, based on open data, open methodology). As second best, I will consider tools that are openly available, but where the data and/or methodology are not open. I will not use tools that require a paid license, even if provided by my institution;
--I will **make use of my publication record as currently available** in the tools I choose (i.e. I will not update ORCID prior to this exercise, or quickly upload a few of my older papers to a public repository - I might do that afterwards, though!);
+- I will **make use of my publication record as currently available** in the tools I choose (i.e. I will not update ORCID prior to this exercise, or quickly upload a few of my older papers to a public repository - I might do that afterwards, though!);
 - As challenged by Jeroen Bosman, I will **[predict my results beforehand](https://twitter.com/MsPhelps/status/940659850543030273)**;
 - I will **not be perfectionist about this**, but rather try to deliver some method and outcome in a reasonable amount of time, for others (or myself) to improve on later.
