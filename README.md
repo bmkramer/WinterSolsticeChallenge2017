@@ -8,3 +8,13 @@ I love winter, I love challenges and I care a lot about open science. So I decid
 - I will **make use of my publication record as currently available** in the tools I choose (i.e. I will not update ORCID prior to this exercise, or quickly upload a few of my older papers to a public repository - I might do that afterwards, though!);
 - As challenged by Jeroen Bosman, I will **[predict my results beforehand](https://twitter.com/MsPhelps/status/940659850543030273)**;
 - I will **not be perfectionist about this**, but rather try to deliver some method and outcome in a reasonable amount of time, for others (or myself) to improve on later.
+
+## Approach
+My plan was to combine ORCID, I4OC and OADOI to collect 
+
+### Step 1: Retrieve DOIs for own research output from ORCID
+(ORCID, ROpenSci, R) DONE (n=50)
+### STEP 2: Retrieve DOIs for references cited by own output using 
+(NB. Only for CrossRef DOIs (n=22),  786 cited references, 190 with DOI)
+### STEP 3: Check OA availability of own output and cited references using OADOI
+(degree 0: 34/50=68.0% ; degree 1: 51/190=26.7%; aggregated (68+0.5(26.7))/1.5=54.2%
