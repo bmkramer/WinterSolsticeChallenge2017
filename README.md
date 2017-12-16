@@ -27,3 +27,10 @@ For this, I made use of [my own OADOI script](https://github.com/bmkramer/OADOI_
 
 ### STEP 4: Calculate final score
 I used a **very** simple algorithm here: calculating the percentage OA for own research output in ORCID (level 0), and for the references cited therein (level 1), and then weighing those as 1 and 0.5, respectively. I did not correct for duplicate citations or self-citations (see remark on perfectionism above :wink:).
+
+
+## Results
+
+Running this script gave the following result for my own research output:
+
+My output is a mixture of publications from my PhD/postdoc years (until 2008) and a variety of research output from my work in the library and scholarly communication community (since 2009). The former I expect to be very low on Open Access, the latter hopefully a lot more :-) Using info on publication dates (from ORCID or CrossRef), it should not be too difficult to split the analysis across these two time periods, but I haven't done that now. 
