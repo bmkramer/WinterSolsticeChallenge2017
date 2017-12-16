@@ -13,14 +13,15 @@ I love winter, I love challenges and I care a lot about open science. So I decid
 
 ### Step 1: Retrieve DOIs for own research output from ORCID
 For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](https://github.com/ropensci/rorcid), written by Scott Chamberlain ([@sckott](https://github.com/sckott). 
-I used the same package to create a variable for first and last name, to include in the output of the script.  
+I used the same package to create a variable for first and last name of the ORCID record holder, to include in the output of the script.  
 
-### STEP 2: Retrieve DOIs for references cited by own output using 
+### STEP 2: Retrieve DOIs for references cited by own output from CrossRef
 This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such an important development - it can provide a truly open citation corpus to use for any application.  Currently, just over [50% of references in CrossRef are open](https://twitter.com/i4oc_org/status/934103494323138560). Have you signed [the petition](http://issi-society.org/open-citations-letter) yet to ask publishers who are dragging their feet to get on board?
 
 There are several [ways to access](https://i4oc.org/#headingThree) the open citation data that I4OC is working to enlarge. One way is by a SPARQL query on the [Open Citation Corpus](http://opencitations.net/), another is through the [CrossRef API](https://github.com/CrossRef/rest-api-doc). 
 
+Since I don't know ~~enough~~ anything about SPARQL yet, I used the CrossRef API. This method can only retrieve cited references for DOIs issued by CrossRef, so I first checked which DOIs from Step 1 were issued by CrossRef, and only checked those for cited references.
+I subsequently filtered the retrieved references for those that included a DOI. 
 
+### STEP 3: Check OA availability of own output and cited references from OADOI
 
-### STEP 3: Check OA availability of own output and cited references using OADOI
-(degree 0: 34/50=68.0% ; degree 1: 51/190=26.7%; aggregated (68+0.5(26.7))/1.5=54.2%
