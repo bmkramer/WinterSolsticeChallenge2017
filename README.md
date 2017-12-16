@@ -16,7 +16,9 @@ For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](ht
 I used the same package to create a variable for first and last name, to include in the output of the script.  
 
 ### STEP 2: Retrieve DOIs for references cited by own output using 
-This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such an important development - it can provide a truly open citation corpus to use for any application.  Currently, over [50% of references in CrossRef are open](https://twitter.com/i4oc_org/status/934103494323138560). Have you signed [the petition](http://issi-society.org/open-citations-letter) yet to ask publishers who are dragging their feet to get on board? Currently, over 50% of citations are open.  
+This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such an important development - it can provide a truly open citation corpus to use for any application.  Currently, just over [50% of references in CrossRef are open](https://twitter.com/i4oc_org/status/934103494323138560). Have you signed [the petition](http://issi-society.org/open-citations-letter) yet to ask publishers who are dragging their feet to get on board?
+
+There are several [ways to access](https://i4oc.org/#headingThree) the open citation data that I4OC is working to enlarge. One way is by a SPARQL query on the [Open Citation Corpus](http://opencitations.net/), another is through the [CrossRef API](https://github.com/CrossRef/rest-api-doc). 
 
 
 
