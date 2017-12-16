@@ -35,4 +35,17 @@ Running this script gave the following result for my own research output:
 
 ![Result Winter Solstice Challenge](/Winter%20Solstice%20Challenge.jpg)
 
-My output is a mixture of publications from my PhD/postdoc years (until 2008) and a variety of research output from my work in the library and scholarly communication community (since 2009). The former I expect to be very low on Open Access, the latter hopefully a lot more :-) Using info on publication dates (from ORCID or CrossRef), it should not be too difficult to split the analysis across these two time periods, but I haven't done that now. 
+My output is a mixture of publications from my PhD/postdoc years (until 2008) and a variety of research output from my work in the library and scholarly communication community (since 2009). The former I expect to be very low on Open Access, the latter hopefully a lot more :-) Using info on publication dates (from ORCID or CrossRef), it should not be too difficult to split the analysis across these two time periods, but I haven't done that here.
+
+## Caveats
+
+- This approach only includes research output that has a DOI. Cited references are only retrieved for output with a CrossRef DOI and also need to have a DOI themselves to be included in the analysis. This excludes many types of research output that either do not have DOI, for which information on their DOI is not included in ORCID or Crossref, or that, for level 0 (own research output), have a DOI from a different registrar (like DataCite). Whether this introduces a systematic bias very much depends on one's type of research output and publication behaviour, but is quite likely. See also the next point. 
+
+- The incompleteness of the open citation data means that the number of citations retrieved will be an underestimation. Since a large proportion of the missing references comes from one publisher not yet participating in I4OC (no guesses needed), there will most likely be a bias here, too (also depending on one's publication behaviour). 
+
+- Possible errors occur when the DOIs retrieved are incomplete (as I've seen in a couple of tests), or contain special characters that cause problems when querying the CrossRef or OADOI API. I tried URL encoding with 'URLencode(URL)', but this slowed the script down consirably, so I decided to just escape any errors with 'TryCatch'. Errors are not (yet) reported on. Depending on publisher's conventions in naming DOIs this *could* introduce systemic bias. 
+
+- No distinction is made between Gold, Hybrid and Green OA. Using the data retrieved from the OADOI API, this can be further refined. 
+
+
+- 
