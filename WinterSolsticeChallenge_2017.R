@@ -37,8 +37,6 @@ df_step1 <- setNames(do.call(rbind.data.frame, mylist), c("ID", "DOI"))
 df_step1 <- subset(df_step1, ID %in% 'DOI')
 #keep only column with DOIs 
 df_step1 <- df_step1['DOI']
-#keep only values starting with 10. (to exclude invalid DOIs)
-#df_step1 <- df_step1[grep("10.", df_step1$DOI), ]
 #row count, declare to variable
 count1 <- nrow(df_step1)
 
