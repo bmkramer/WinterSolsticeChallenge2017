@@ -26,4 +26,4 @@ Since I don't know ~~enough~~ anything about SPARQL yet, I used the CrossRef API
 For this, I made use of [my own OADOI script](https://github.com/bmkramer/OADOI_API_R). There is also the ROpenSci package [roadoi](https://github.com/ropensci/roadoi) from Najko Jahn ([@njahn82](https://github.com/njahn82)) that might be very useful for this, but that I haven't explored yet myself.  
 
 ### STEP 4: Calculate final score
-I used a **very** simple algorithm here: calculating the percentage OA for own research output in ORCID (level 0), and for the references cited therein (level 1), and then weighing those as 1 and 0.5, respectively. I did not correct for duplicate citations or self-citations (see remark on perfectionism above :-))
+I used a **very** simple algorithm here: calculating the percentage OA for own research output in ORCID (level 0), and for the references cited therein (level 1), and then weighing those as 1 and 0.5, respectively. I did not correct for duplicate citations or self-citations (see remark on perfectionism above :wink:).
