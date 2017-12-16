@@ -51,7 +51,7 @@ My output is a mixture of publications from my PhD/postdoc years (until 2008) an
 
 - No distinction is made between Gold, Hybrid and Green OA. Using the data retrieved from the [OADOI API v2](https://oadoi.org/api/v2), this can be further refined. 
 
-- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously influence the final score. There are certainly more sophisticated ways to devise this! (but: curbing perfectionism...)
+- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously influence the result. There are certainly more sophisticated ways to devise this! (but: curbing perfectionism...)
 
 - There are many ways this script can be improved. Still very much learning R - so thanks Egon for the challenge! 
 
