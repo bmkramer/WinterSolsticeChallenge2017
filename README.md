@@ -12,7 +12,7 @@ I love winter, I love challenges and I care a lot about open science. So I decid
 ## Approach
 
 ### Step 1: Retrieve DOIs for own research output from ORCID
-For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](https://github.com/ropensci/rorcid), written by Scott Chamberlain ([@sckott](https://github.com/sckott). 
+For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](https://github.com/ropensci/rorcid), written by Scott Chamberlain ([@sckott](https://github.com/sckott)). 
 I used the same package to create a variable for first and last name of the ORCID record holder, to include in the output of the script.  
 
 ### STEP 2: Retrieve DOIs for references cited by own output from CrossRef
@@ -20,8 +20,7 @@ This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such
 
 There are several [ways to access](https://i4oc.org/#headingThree) the open citation data that I4OC is working to enlarge. One way is by a SPARQL query on the [Open Citation Corpus](http://opencitations.net/), another is through the [CrossRef API](https://github.com/CrossRef/rest-api-doc). 
 
-Since I don't know ~~enough~~ anything about SPARQL yet, I used the CrossRef API. This method can only retrieve cited references for DOIs issued by CrossRef, so I first checked which DOIs from Step 1 were issued by CrossRef, and only checked those for cited references.
-I subsequently filtered the retrieved references for those that included a DOI. 
+Since I don't know ~~enough~~ anything about SPARQL yet, I used the CrossRef API. This method can only retrieve cited references for DOIs issued by CrossRef, so I first checked which DOIs from Step 1 were issued by CrossRef, and only retrieved cited references for those. I subsequently filtered the obtained references for those that included a DOI. 
 
 ### STEP 3: Check OA availability of own output and cited references from OADOI
-
+For this, I made use of [my own OADOI script](https://github.com/bmkramer/OADOI_API_R). There is also the ROpenSci package [roadoi](https://github.com/ropensci/roadoi) from Najko Jahn ([@njahn82](https://github.com/njahn82))that might be very useful for this, but that I haven't explored yet myself.  
