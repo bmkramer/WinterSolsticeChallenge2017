@@ -1,6 +1,6 @@
-# WinterSolsticeChallenge2017
-Winter Solstice Challenge 2017
-Egon Willighagen recently issued an interesting winter solstice challenge: calculating your open knowledge score. This is loosely defined as a measure for the openness of your own research output as well as the research you cite. Of course, it can be extended multiple layers deeper, assessing the openness of the knowledge trail leading to your own results. Egon issued a prize both for the highest 'score' and for the best method to calculate the score (including the openness of the method and the tools/platforms used). Bravo!
+# Winter Solstice Challenge2017
+
+Egon Willighagen (@egonw) recently issued an interesting winter solstice challenge: calculating your open knowledge score. This is loosely defined as a measure for the openness of your own research output as well as the research you cite. Of course, it can be extended multiple layers deeper, assessing the openness of the knowledge trail leading to your own results. Egon issued a prize both for the highest 'score' and for the best method to calculate the score (including the openness of the method and the tools/platforms used). Bravo!
 
 I love winter, I love challenges and I care a lot about open science. So I decided to take this one on. Before starting, I set the following parameters for myself:
 
