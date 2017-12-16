@@ -47,5 +47,7 @@ My output is a mixture of publications from my PhD/postdoc years (until 2008) an
 
 - No distinction is made between Gold, Hybrid and Green OA. Using the data retrieved from the [OADOI API v2](https://oadoi.org/api/v2), this can be further refined. 
 
+- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously change the results. There are certainly more sophisticated ways to devise this! (curbing perfectionism...)
+
 ## The script
 Winter Solstice Challenge 2017.R
