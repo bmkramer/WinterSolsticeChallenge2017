@@ -1,9 +1,10 @@
 # Winter Solstice Challenge 2017
 
-Egon Willighagen ([@egonw](https://github.com/egonw)) recently issued an interesting [winter solstice challenge](http://chem-bla-ics.blogspot.nl/2017/11/winter-solstice-challenge-what-is-your.html): calculating your open knowledge score. This is loosely defined as a measure for the openness of your own research output as well as the research you cite. Of course, it can be extended multiple layers deeper, assessing the openness of the knowledge trail leading to your own results. Egon issued a prize both for the highest 'score' and for the best method to calculate the score (including the [openness of the method and the tools/platforms used](https://twitter.com/MsPhelps/status/935180455334334473)). Bravo!
-
 ![Winter Solstice Challenge - image](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Robert_Snache_-_Spirithands.net_-_Winter_Solstice_Lunar_Eclipse_Startrails_%28by%29.jpg/160px-Robert_Snache_-_Spirithands.net_-_Winter_Solstice_Lunar_Eclipse_Startrails_%28by%29.jpg)
 [CC-BY2.0 Wikimedia](https://commons.wikimedia.org/wiki/File:Robert_Snache_-_Spirithands.net_-_Winter_Solstice_Lunar_Eclipse_Startrails_(by).jpg)
+
+Egon Willighagen ([@egonw](https://github.com/egonw)) recently issued an interesting [winter solstice challenge](http://chem-bla-ics.blogspot.nl/2017/11/winter-solstice-challenge-what-is-your.html): calculating your open knowledge score. This is loosely defined as a measure for the openness of your own research output as well as the research you cite. Of course, it can be extended multiple layers deeper, assessing the openness of the knowledge trail leading to your own results. Egon issued a prize both for the highest 'score' and for the best method to calculate the score (including the [openness of the method and the tools/platforms used](https://twitter.com/MsPhelps/status/935180455334334473)). Bravo!
+
 
 I love winter, I love challenges and I care a lot about open science. So I decided to take this one on. Before starting, I set the following parameters for myself:
 
