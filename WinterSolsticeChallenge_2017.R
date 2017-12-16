@@ -2,7 +2,7 @@
 #It attempts to assess OA availability of research output in ORCID and the references therein (1 layer deep)
 #http://chem-bla-ics.blogspot.nl/2017/11/winter-solstice-challenge-what-is-your.html
 
-#user input (insert in script): ORCID DOI (in step 1), email address in the API calls (in step 1, 2 and 3)
+#user input (insert in script): ORCID DOI (in step 1), email address in the API calls (in step 2 and 3)
 
 install.packages("rorcid")
 install.packages("rjson")
