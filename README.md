@@ -20,7 +20,7 @@ For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](ht
 I used the same package to create a variable for first and last name of the ORCID record holder, to include in the output of the script.  
 
 ### STEP 2: Retrieve DOIs for references cited by own output from CrossRef
-This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such an important development - it can provide a truly open citation corpus to use for any application.  Currently, just over [50% of references in CrossRef are open](https://twitter.com/i4oc_org/status/934103494323138560). Have you signed [the petition](http://issi-society.org/open-citations-letter) yet to ask publishers who are dragging their feet to get on board?
+This is why the [Initiative for Open Citations (I4OC)](https://i4oc.org) is such an important development - it can provide a truly open citation corpus to use for any application.  Currently, over [50% of references in CrossRef are open](https://twitter.com/i4oc_org/status/934103494323138560). Have you signed [the petition](http://issi-society.org/open-citations-letter) yet to ask publishers who are dragging their feet to get on board?
 
 There are several [ways to access](https://i4oc.org/#headingThree) the open citation data that I4OC is working to enlarge. One way is by a SPARQL query on the [Open Citation Corpus](http://opencitations.net/), another is through the [CrossRef API](https://github.com/CrossRef/rest-api-doc). 
 
@@ -51,9 +51,9 @@ My output is a mixture of publications from my PhD/postdoc years (until 2008) an
 
 - No distinction is made between Gold, Hybrid and Green OA. Using the data retrieved from the [OADOI API v2](https://oadoi.org/api/v2), this can be further refined. 
 
-- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously change the results. There are certainly more sophisticated ways to devise this! (but curbing perfectionism...)
+- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously influence the final score. There are certainly more sophisticated ways to devise this! (but: curbing perfectionism...)
 
-- There are many ways this script can be improved. Still very much learning R! 
+- There are many ways this script can be improved. Still very much learning R - so thanks Egon for the challenge! 
 
 ## The script
 [WinterSolsticeChallenge_2017.R](https://github.com/bmkramer/WinterSolsticeChallenge2017/blob/master/WinterSolsticeChallenge_2017.R)
