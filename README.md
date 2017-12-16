@@ -10,10 +10,11 @@ I love winter, I love challenges and I care a lot about open science. So I decid
 - I will **not be perfectionist about this**, but rather try to deliver some method and outcome in a reasonable amount of time, for others (or myself) to improve on later.
 
 ## Approach
-My plan was to combine ORCID, I4OC and OADOI to collect 
 
 ### Step 1: Retrieve DOIs for own research output from ORCID
-(ORCID, ROpenSci, R) DONE (n=50)
+For this I made use of the [ROpenSci](https://ropensci.org/) package [rorcid](https://github.com/ropensci/rorcid), written by Scott Chamberlain ([@sckott]https://github.com/sckott). 
+I used the same package to create a variable for first and last name, to include in the output of the script.  
+
 ### STEP 2: Retrieve DOIs for references cited by own output using 
 (NB. Only for CrossRef DOIs (n=22),  786 cited references, 190 with DOI)
 ### STEP 3: Check OA availability of own output and cited references using OADOI
