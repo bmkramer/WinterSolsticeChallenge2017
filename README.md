@@ -2,6 +2,8 @@
 
 Egon Willighagen ([@egonw](https://github.com/egonw)) recently issued an interesting [winter solstice challenge](http://chem-bla-ics.blogspot.nl/2017/11/winter-solstice-challenge-what-is-your.html): calculating your open knowledge score. This is loosely defined as a measure for the openness of your own research output as well as the research you cite. Of course, it can be extended multiple layers deeper, assessing the openness of the knowledge trail leading to your own results. Egon issued a prize both for the highest 'score' and for the best method to calculate the score (including the [openness of the method and the tools/platforms used](https://twitter.com/MsPhelps/status/935180455334334473)). Bravo!
 
+![Winter Solstice Challenge - image](https://upload.wikimedia.org/wikipedia/commons/0/0e/Robert_Snache_-_Spirithands.net_-_Winter_Solstice_Lunar_Eclipse_Startrails_%28by%29.jpg)
+
 I love winter, I love challenges and I care a lot about open science. So I decided to take this one on. Before starting, I set the following parameters for myself:
 
 - I will only use **fully open tools** (openly available, based on open data, open methodology). As second best, I will consider tools that are openly available, but where the data and/or methodology are not open. I will not use tools that require a paid license, even if provided by my institution;
@@ -47,7 +49,9 @@ My output is a mixture of publications from my PhD/postdoc years (until 2008) an
 
 - No distinction is made between Gold, Hybrid and Green OA. Using the data retrieved from the [OADOI API v2](https://oadoi.org/api/v2), this can be further refined. 
 
-- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously change the results. There are certainly more sophisticated ways to devise this! (curbing perfectionism...)
+- As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously change the results. There are certainly more sophisticated ways to devise this! (but curbing perfectionism...)
+
+- There are many ways this script can be improved. Still very much learning R! 
 
 ## The script
 [WinterSolsticeChallenge_2017.R](https://github.com/bmkramer/WinterSolsticeChallenge2017/blob/master/WinterSolsticeChallenge_2017.R)
