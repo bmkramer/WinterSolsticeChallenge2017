@@ -23,4 +23,7 @@ There are several [ways to access](https://i4oc.org/#headingThree) the open cita
 Since I don't know ~~enough~~ anything about SPARQL yet, I used the CrossRef API. This method can only retrieve cited references for DOIs issued by CrossRef, so I first checked which DOIs from Step 1 were issued by CrossRef, and only retrieved cited references for those. I subsequently filtered the obtained references for those that included a DOI. 
 
 ### STEP 3: Check OA availability of own output and cited references from OADOI
-For this, I made use of [my own OADOI script](https://github.com/bmkramer/OADOI_API_R). There is also the ROpenSci package [roadoi](https://github.com/ropensci/roadoi) from Najko Jahn ([@njahn82](https://github.com/njahn82))that might be very useful for this, but that I haven't explored yet myself.  
+For this, I made use of [my own OADOI script](https://github.com/bmkramer/OADOI_API_R). There is also the ROpenSci package [roadoi](https://github.com/ropensci/roadoi) from Najko Jahn ([@njahn82](https://github.com/njahn82)) that might be very useful for this, but that I haven't explored yet myself.  
+
+### STEP 4: Calculate final score
+I used a **very** simple algorithm here: calculating the percentage OA for own research output in ORCID (level 0), and for the references cited therein (level 1), and then weighing those as 1 and 0.5, respectively. I did not correct for duplicate citations or self-citations (see remark on perfectionism above :-))
