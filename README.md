@@ -50,4 +50,4 @@ My output is a mixture of publications from my PhD/postdoc years (until 2008) an
 - As mentioned above, duplicate citations and self-citations are not corrected for in any way. Additionally, I have only looked 1 layer deep, this can of course be extended further by repeating step 2. Additionally, using a different algorithm/weighing for calculating the final score will obviously change the results. There are certainly more sophisticated ways to devise this! (curbing perfectionism...)
 
 ## The script
-Winter Solstice Challenge 2017.R
+[WinterSolsticeChallenge_2017.R](https://github.com/bmkramer/WinterSolsticeChallenge2017/blob/master/WinterSolsticeChallenge_2017.R)
