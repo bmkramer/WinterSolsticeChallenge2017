@@ -38,7 +38,7 @@ authorWorkDOIs <- subset(authorWorkDOIs, ID %in% 'DOI')
 #keep only column with DOIs 
 authorWorkDOIs <- authorWorkDOIs['DOI']
 #row count, declare to variable
-count1 <- nrow(authorWorkDOIs)
+authorWorkCount <- nrow(authorWorkDOIs)
 
 #STEP 2 Collect DOIs of cited references via CrossRef API, if provided
 
@@ -62,7 +62,7 @@ df_step2a <- data.frame(matrix(nrow = 1, ncol = 2 ))
 colnames(df_step2a) = c("DOI","agency")
 
 #check agency for each DOI, fill dataframe
-for (i in 1:count1){
+for (i in 1:authorWorkCount){
   tryCatch({
   doi <- authorWorkDOIs$DOI[i]
   doi_character <- as.character(doi)
@@ -150,7 +150,7 @@ getDataOADOI <- function(doi){
 df <- data.frame(matrix(nrow = 1, ncol =7))
 colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
-for (i in 1:count1){
+for (i in 1:authorWorkCount){
   tryCatch({
   df <- rbind(df,getDataOADOI(authorWorkDOIs$DOI[i]))
   }, error=function(e){})
@@ -179,7 +179,7 @@ count6 <- nrow(df_level_1)
 #STEP 4: calculate %OA for level_0 / level_1 / final
 
 # %OA for level_0 
-OA_level_0 <- round(count5/count1,digits=2)
+OA_level_0 <- round(count5/authorWorkCount,digits=2)
 # %OA for level_1
 OA_level_1 <- round(count6/count4,digits=2)
 # %OA level final (counting level_0 as 1, level_1 as 0.5)
@@ -187,7 +187,7 @@ OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
 
 #print summary
 cat(name_given, name_family,
-    "\n",count1,"DOIs in ORCID, of which",count2,"in CrossRef",  
+    "\n",authorWorkCount,"DOIs in ORCID, of which",count2,"in CrossRef",  
     "\n",count3,"references in CrossRef, of which",count4,"with DOI",
     "\n","level 0:",OA_level_0*100,"% OA",
     "\n","level 1:",OA_level_1*100,"% OA",
