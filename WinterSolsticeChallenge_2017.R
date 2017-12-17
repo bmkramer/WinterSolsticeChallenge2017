@@ -86,9 +86,9 @@ crossrefCount <- nrow(authorWorksinCrossref)
 #collect DOIs of cited references, if provided
 
 #create empty dataframe
-df_step2b <- data.frame(matrix(nrow = 1, ncol = 2 ))
+citedWorks <- data.frame(matrix(nrow = 1, ncol = 2 ))
 #set column names of dataframe
-colnames(df_step2b) = c("citing DOI","DOI")
+colnames(citedWorks) = c("citing DOI","DOI")
 
 #run double loop to look up references for each citing article (i), and to get DOI for each cited reference (j)
 for (i in 1:crossrefCount){
@@ -106,14 +106,14 @@ for (i in 1:crossrefCount){
       naIfNull(doi_character),
       naIfNull(references[[j]]$DOI)
     )
-    df_step2b <- rbind(df_step2b,result)
+    citedWorks <- rbind(citedWorks,result)
   }
   }, error=function(e){})
 }
 #count number of references
-count3 <- nrow(df_step2b)
+count3 <- nrow(citedWorks)
 #subset DOIs of cited references (excluding NA's)
-df_step2 <- subset(df_step2b,!is.na(DOI))
+df_step2 <- subset(citedWorks,!is.na(DOI))
 #count number of DOIs
 count4 <- nrow(df_step2)
 
