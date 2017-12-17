@@ -147,15 +147,15 @@ getDataOADOI <- function(doi){
 #check OA availability of each ORCID DOI (level_0)
 
 #create empty dataframe with 7 columns
-df <- data.frame(matrix(nrow = 1, ncol =7))
-colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
+authorOAinfo <- data.frame(matrix(nrow = 1, ncol =7))
+colnames(authorOAinfo) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
 for (i in 1:authorWorkCount){
   tryCatch({
-  df <- rbind(df,getDataOADOI(authorWorkDOIs$DOI[i]))
+  authorOAinfo <- rbind(authorOAinfo,getDataOADOI(authorWorkDOIs$DOI[i]))
   }, error=function(e){})
 }
-OA_level_0 <- df
+OA_level_0 <- authorOAinfo
 #subset is_oa = TRUE
 OA_level_0  <-subset(OA_level_0 , is_oa == TRUE)
 count5 <- nrow(OA_level_0)
@@ -163,15 +163,15 @@ count5 <- nrow(OA_level_0)
 #check OA availability of each referenced DOI (level_1)
 
 #create empty dataframe with 7 columns
-df <- data.frame(matrix(nrow = 1, ncol =7))
-colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
+citedOAinfo <- data.frame(matrix(nrow = 1, ncol =7))
+colnames(citedOAinfo) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
 for (i in 1:citedDOICount){
   tryCatch({
-  df <- rbind(df,getDataOADOI(citedWorksWithDOIs$DOI[i]))
+  citedOAinfo <- rbind(citedOAinfo,getDataOADOI(citedWorksWithDOIs$DOI[i]))
   }, error=function(e){})
 }
-OA_level_1 <- df
+OA_level_1 <- citedOAinfo
 #subset is_oa = TRUE
 OA_level_1  <-subset(OA_level_1 , is_oa == TRUE)
 count6 <- nrow(OA_level_1)
