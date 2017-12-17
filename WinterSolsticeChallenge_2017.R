@@ -81,7 +81,7 @@ for (i in 1:authorWorkCount){
 #subset only CrossRef DOIs
 authorWorksinCrossref <- subset(authorWorksinCrossref,agency=="crossref")
 #count number of DOIs
-count2 <- nrow(authorWorksinCrossref)
+crossrefCount <- nrow(authorWorksinCrossref)
 
 #collect DOIs of cited references, if provided
 
@@ -91,7 +91,7 @@ df_step2b <- data.frame(matrix(nrow = 1, ncol = 2 ))
 colnames(df_step2b) = c("citing DOI","DOI")
 
 #run double loop to look up references for each citing article (i), and to get DOI for each cited reference (j)
-for (i in 1:count2){
+for (i in 1:crossrefCount){
   tryCatch({
   doi <- authorWorksinCrossref$DOI[i]
   doi_character <- as.character(doi)
@@ -187,7 +187,7 @@ OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
 
 #print summary
 cat(name_given, name_family,
-    "\n",authorWorkCount,"DOIs in ORCID, of which",count2,"in CrossRef",  
+    "\n",authorWorkCount,"DOIs in ORCID, of which",crossrefCount,"in CrossRef",  
     "\n",count3,"references in CrossRef, of which",count4,"with DOI",
     "\n","level 0:",OA_level_0*100,"% OA",
     "\n","level 1:",OA_level_1*100,"% OA",
