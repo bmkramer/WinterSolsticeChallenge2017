@@ -32,13 +32,13 @@ out <- works(orcid_id(var))
 #pull out the variable for external identifiers (DOI and EID), this is a list
 mylist <- out$data$`work-external-identifiers.work-external-identifier`
 #coerce list into a dataframe
-df_step1 <- setNames(do.call(rbind.data.frame, mylist), c("ID", "DOI"))
+authorWorkDOIs <- setNames(do.call(rbind.data.frame, mylist), c("ID", "DOI"))
 #subset only DOIs (get rid of rows with EIDs)
-df_step1 <- subset(df_step1, ID %in% 'DOI')
+authorWorkDOIs <- subset(authorWorkDOIs, ID %in% 'DOI')
 #keep only column with DOIs 
-df_step1 <- df_step1['DOI']
+authorWorkDOIs <- authorWorkDOIs['DOI']
 #row count, declare to variable
-count1 <- nrow(df_step1)
+count1 <- nrow(authorWorkDOIs)
 
 #STEP 2 Collect DOIs of cited references via CrossRef API, if provided
 
@@ -64,7 +64,7 @@ colnames(df_step2a) = c("DOI","agency")
 #check agency for each DOI, fill dataframe
 for (i in 1:count1){
   tryCatch({
-  doi <- df_step1$DOI[i]
+  doi <- authorWorkDOIs$DOI[i]
   doi_character <- as.character(doi)
   #enter your email address in the line below (replace your@email.com), this helps CrossRef contact you if something is wrong
   url <- paste("https://api.crossref.org/works/",doi,"/agency?mailto=your@email.com",sep="")
@@ -152,7 +152,7 @@ colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "jour
 #fill dataframe
 for (i in 1:count1){
   tryCatch({
-  df <- rbind(df,getDataOADOI(df_step1$DOI[i]))
+  df <- rbind(df,getDataOADOI(authorWorkDOIs$DOI[i]))
   }, error=function(e){})
 }
 df_level_0 <- df
