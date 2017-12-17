@@ -57,9 +57,9 @@ naIfNull <- function(cell){
 #create new dataframe with only CrossRef DOIs
 
 #create empty dataframe
-df_step2a <- data.frame(matrix(nrow = 1, ncol = 2 ))
+authorWorksinCrossref <- data.frame(matrix(nrow = 1, ncol = 2 ))
 #set column names of dataframe
-colnames(df_step2a) = c("DOI","agency")
+colnames(authorWorksinCrossref) = c("DOI","agency")
 
 #check agency for each DOI, fill dataframe
 for (i in 1:authorWorkCount){
@@ -75,13 +75,13 @@ for (i in 1:authorWorkCount){
     naIfNull(doi_character),
     naIfNull(agency)
   )
-  df_step2a <- rbind(df_step2a,result)
+  authorWorksinCrossref <- rbind(authorWorksinCrossref,result)
   }, error=function(e){})
 }  
 #subset only CrossRef DOIs
-df_step2a <- subset(df_step2a,agency=="crossref")
+authorWorksinCrossref <- subset(authorWorksinCrossref,agency=="crossref")
 #count number of DOIs
-count2 <- nrow(df_step2a)
+count2 <- nrow(authorWorksinCrossref)
 
 #collect DOIs of cited references, if provided
 
@@ -93,7 +93,7 @@ colnames(df_step2b) = c("citing DOI","DOI")
 #run double loop to look up references for each citing article (i), and to get DOI for each cited reference (j)
 for (i in 1:count2){
   tryCatch({
-  doi <- df_step2a$DOI[i]
+  doi <- authorWorksinCrossref$DOI[i]
   doi_character <- as.character(doi)
   #enter your email address in the line below (replace your@email.com), this helps CrossRef contact you if something is wrong
   url <- paste("https://api.crossref.org/works/",doi,"?mailto=your@email.com",sep="")
