@@ -155,10 +155,10 @@ for (i in 1:authorWorkCount){
   df <- rbind(df,getDataOADOI(authorWorkDOIs$DOI[i]))
   }, error=function(e){})
 }
-df_level_0 <- df
+OA_level_0 <- df
 #subset is_oa = TRUE
-df_level_0  <-subset(df_level_0 , is_oa == TRUE)
-count5 <- nrow(df_level_0)
+OA_level_0  <-subset(OA_level_0 , is_oa == TRUE)
+count5 <- nrow(OA_level_0)
 
 #check OA availability of each referenced DOI (level_1)
 
@@ -171,10 +171,10 @@ for (i in 1:citedDOICount){
   df <- rbind(df,getDataOADOI(citedWorksWithDOIs$DOI[i]))
   }, error=function(e){})
 }
-df_level_1 <- df
+OA_level_1 <- df
 #subset is_oa = TRUE
-df_level_1  <-subset(df_level_1 , is_oa == TRUE)
-count6 <- nrow(df_level_1)
+OA_level_1  <-subset(OA_level_1 , is_oa == TRUE)
+count6 <- nrow(OA_level_1)
 
 #STEP 4: calculate %OA for level_0 / level_1 / final
 
