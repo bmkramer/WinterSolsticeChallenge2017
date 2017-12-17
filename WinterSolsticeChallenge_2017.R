@@ -32,13 +32,13 @@ out <- works(orcid_id(var))
 #pull out the variable for external identifiers (DOI and EID), this is a list
 mylist <- out$data$`work-external-identifiers.work-external-identifier`
 #coerce list into a dataframe
-df_step1 <- setNames(do.call(rbind.data.frame, mylist), c("ID", "DOI"))
+authorWorkDOIs <- setNames(do.call(rbind.data.frame, mylist), c("ID", "DOI"))
 #subset only DOIs (get rid of rows with EIDs)
-df_step1 <- subset(df_step1, ID %in% 'DOI')
+authorWorkDOIs <- subset(authorWorkDOIs, ID %in% 'DOI')
 #keep only column with DOIs 
-df_step1 <- df_step1['DOI']
+authorWorkDOIs <- authorWorkDOIs['DOI']
 #row count, declare to variable
-count1 <- nrow(df_step1)
+authorWorkCount <- nrow(authorWorkDOIs)
 
 #STEP 2 Collect DOIs of cited references via CrossRef API, if provided
 
@@ -57,14 +57,14 @@ naIfNull <- function(cell){
 #create new dataframe with only CrossRef DOIs
 
 #create empty dataframe
-df_step2a <- data.frame(matrix(nrow = 1, ncol = 2 ))
+authorWorksinCrossref <- data.frame(matrix(nrow = 1, ncol = 2 ))
 #set column names of dataframe
-colnames(df_step2a) = c("DOI","agency")
+colnames(authorWorksinCrossref) = c("DOI","agency")
 
 #check agency for each DOI, fill dataframe
-for (i in 1:count1){
+for (i in 1:authorWorkCount){
   tryCatch({
-  doi <- df_step1$DOI[i]
+  doi <- authorWorkDOIs$DOI[i]
   doi_character <- as.character(doi)
   #enter your email address in the line below (replace your@email.com), this helps CrossRef contact you if something is wrong
   url <- paste("https://api.crossref.org/works/",doi,"/agency?mailto=your@email.com",sep="")
@@ -75,25 +75,25 @@ for (i in 1:count1){
     naIfNull(doi_character),
     naIfNull(agency)
   )
-  df_step2a <- rbind(df_step2a,result)
+  authorWorksinCrossref <- rbind(authorWorksinCrossref,result)
   }, error=function(e){})
 }  
 #subset only CrossRef DOIs
-df_step2a <- subset(df_step2a,agency=="crossref")
+authorWorksinCrossref <- subset(authorWorksinCrossref,agency=="crossref")
 #count number of DOIs
-count2 <- nrow(df_step2a)
+crossrefCount <- nrow(authorWorksinCrossref)
 
 #collect DOIs of cited references, if provided
 
 #create empty dataframe
-df_step2b <- data.frame(matrix(nrow = 1, ncol = 2 ))
+citedWorks <- data.frame(matrix(nrow = 1, ncol = 2 ))
 #set column names of dataframe
-colnames(df_step2b) = c("citing DOI","DOI")
+colnames(citedWorks) = c("citing DOI","DOI")
 
 #run double loop to look up references for each citing article (i), and to get DOI for each cited reference (j)
-for (i in 1:count2){
+for (i in 1:crossrefCount){
   tryCatch({
-  doi <- df_step2a$DOI[i]
+  doi <- authorWorksinCrossref$DOI[i]
   doi_character <- as.character(doi)
   #enter your email address in the line below (replace your@email.com), this helps CrossRef contact you if something is wrong
   url <- paste("https://api.crossref.org/works/",doi,"?mailto=your@email.com",sep="")
@@ -106,16 +106,16 @@ for (i in 1:count2){
       naIfNull(doi_character),
       naIfNull(references[[j]]$DOI)
     )
-    df_step2b <- rbind(df_step2b,result)
+    citedWorks <- rbind(citedWorks,result)
   }
   }, error=function(e){})
 }
 #count number of references
-count3 <- nrow(df_step2b)
+citedWorkCount <- nrow(citedWorks)
 #subset DOIs of cited references (excluding NA's)
-df_step2 <- subset(df_step2b,!is.na(DOI))
+citedWorksWithDOIs <- subset(citedWorks,!is.na(DOI))
 #count number of DOIs
-count4 <- nrow(df_step2)
+citedDOICount <- nrow(citedWorksWithDOIs)
 
 #STEP 3 Check OA availability with OADOI
 
@@ -147,48 +147,48 @@ getDataOADOI <- function(doi){
 #check OA availability of each ORCID DOI (level_0)
 
 #create empty dataframe with 7 columns
-df <- data.frame(matrix(nrow = 1, ncol =7))
-colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
+authorOAinfo <- data.frame(matrix(nrow = 1, ncol =7))
+colnames(authorOAinfo) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
-for (i in 1:count1){
+for (i in 1:authorWorkCount){
   tryCatch({
-  df <- rbind(df,getDataOADOI(df_step1$DOI[i]))
+  authorOAinfo <- rbind(authorOAinfo,getDataOADOI(authorWorkDOIs$DOI[i]))
   }, error=function(e){})
 }
-df_level_0 <- df
+OA_level_0 <- authorOAinfo
 #subset is_oa = TRUE
-df_level_0  <-subset(df_level_0 , is_oa == TRUE)
-count5 <- nrow(df_level_0)
+OA_level_0  <-subset(OA_level_0 , is_oa == TRUE)
+oaWorkCount <- nrow(OA_level_0)
 
 #check OA availability of each referenced DOI (level_1)
 
 #create empty dataframe with 7 columns
-df <- data.frame(matrix(nrow = 1, ncol =7))
-colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
+citedOAinfo <- data.frame(matrix(nrow = 1, ncol =7))
+colnames(citedOAinfo) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
-for (i in 1:count4){
+for (i in 1:citedDOICount){
   tryCatch({
-  df <- rbind(df,getDataOADOI(df_step2$DOI[i]))
+  citedOAinfo <- rbind(citedOAinfo,getDataOADOI(citedWorksWithDOIs$DOI[i]))
   }, error=function(e){})
 }
-df_level_1 <- df
+OA_level_1 <- citedOAinfo
 #subset is_oa = TRUE
-df_level_1  <-subset(df_level_1 , is_oa == TRUE)
-count6 <- nrow(df_level_1)
+OA_level_1  <-subset(OA_level_1 , is_oa == TRUE)
+citedOACount <- nrow(OA_level_1)
 
 #STEP 4: calculate %OA for level_0 / level_1 / final
 
 # %OA for level_0 
-OA_level_0 <- round(count5/count1,digits=2)
+OA_score_0 <- round(oaWorkCount/authorWorkCount,digits=2)
 # %OA for level_1
-OA_level_1 <- round(count6/count4,digits=2)
+OA_score_1 <- round(citedOACount/citedDOICount,digits=2)
 # %OA level final (counting level_0 as 1, level_1 as 0.5)
-OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
+OA_score <- round(((OA_score_0 + 0.5*(OA_score_1))/1.5),digits=2)
 
 #print summary
 cat(name_given, name_family,
-    "\n",count1,"DOIs in ORCID, of which",count2,"in CrossRef",  
-    "\n",count3,"references in CrossRef, of which",count4,"with DOI",
-    "\n","level 0:",OA_level_0*100,"% OA",
-    "\n","level 1:",OA_level_1*100,"% OA",
-    "\n","final score:",OA_level*100,"% OA")
+    "\n",authorWorkCount,"DOIs in ORCID, of which",crossrefCount,"in CrossRef",  
+    "\n",citedWorkCount,"references in CrossRef, of which",citedDOICount,"with DOI",
+    "\n","level 0:",OA_score_0*100,"% OA",
+    "\n","level 1:",OA_score_1*100,"% OA",
+    "\n","final score:",OA_score*100,"% OA")
