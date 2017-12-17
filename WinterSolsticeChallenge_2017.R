@@ -111,7 +111,7 @@ for (i in 1:crossrefCount){
   }, error=function(e){})
 }
 #count number of references
-count3 <- nrow(citedWorks)
+citedWorkCount <- nrow(citedWorks)
 #subset DOIs of cited references (excluding NA's)
 df_step2 <- subset(citedWorks,!is.na(DOI))
 #count number of DOIs
@@ -188,7 +188,7 @@ OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
 #print summary
 cat(name_given, name_family,
     "\n",authorWorkCount,"DOIs in ORCID, of which",crossrefCount,"in CrossRef",  
-    "\n",count3,"references in CrossRef, of which",count4,"with DOI",
+    "\n",citedWorkCount,"references in CrossRef, of which",count4,"with DOI",
     "\n","level 0:",OA_level_0*100,"% OA",
     "\n","level 1:",OA_level_1*100,"% OA",
     "\n","final score:",OA_level*100,"% OA")
