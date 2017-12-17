@@ -115,7 +115,7 @@ citedWorkCount <- nrow(citedWorks)
 #subset DOIs of cited references (excluding NA's)
 citedWorksWithDOIs <- subset(citedWorks,!is.na(DOI))
 #count number of DOIs
-count4 <- nrow(citedWorksWithDOIs)
+citedDOICount <- nrow(citedWorksWithDOIs)
 
 #STEP 3 Check OA availability with OADOI
 
@@ -166,7 +166,7 @@ count5 <- nrow(df_level_0)
 df <- data.frame(matrix(nrow = 1, ncol =7))
 colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "journal_is_oa")
 #fill dataframe
-for (i in 1:count4){
+for (i in 1:citedDOICount){
   tryCatch({
   df <- rbind(df,getDataOADOI(citedWorksWithDOIs$DOI[i]))
   }, error=function(e){})
@@ -181,14 +181,14 @@ count6 <- nrow(df_level_1)
 # %OA for level_0 
 OA_level_0 <- round(count5/authorWorkCount,digits=2)
 # %OA for level_1
-OA_level_1 <- round(count6/count4,digits=2)
+OA_level_1 <- round(count6/citedDOICount,digits=2)
 # %OA level final (counting level_0 as 1, level_1 as 0.5)
 OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
 
 #print summary
 cat(name_given, name_family,
     "\n",authorWorkCount,"DOIs in ORCID, of which",crossrefCount,"in CrossRef",  
-    "\n",citedWorkCount,"references in CrossRef, of which",count4,"with DOI",
+    "\n",citedWorkCount,"references in CrossRef, of which",citedDOICount,"with DOI",
     "\n","level 0:",OA_level_0*100,"% OA",
     "\n","level 1:",OA_level_1*100,"% OA",
     "\n","final score:",OA_level*100,"% OA")
