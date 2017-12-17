@@ -179,16 +179,16 @@ citedOACount <- nrow(OA_level_1)
 #STEP 4: calculate %OA for level_0 / level_1 / final
 
 # %OA for level_0 
-OA_level_0 <- round(oaWorkCount/authorWorkCount,digits=2)
+OA_score_0 <- round(oaWorkCount/authorWorkCount,digits=2)
 # %OA for level_1
-OA_level_1 <- round(citedOACount/citedDOICount,digits=2)
+OA_score_1 <- round(citedOACount/citedDOICount,digits=2)
 # %OA level final (counting level_0 as 1, level_1 as 0.5)
-OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
+OA_score <- round(((OA_score_0 + 0.5*(OA_score_1))/1.5),digits=2)
 
 #print summary
 cat(name_given, name_family,
     "\n",authorWorkCount,"DOIs in ORCID, of which",crossrefCount,"in CrossRef",  
     "\n",citedWorkCount,"references in CrossRef, of which",citedDOICount,"with DOI",
-    "\n","level 0:",OA_level_0*100,"% OA",
-    "\n","level 1:",OA_level_1*100,"% OA",
-    "\n","final score:",OA_level*100,"% OA")
+    "\n","level 0:",OA_score_0*100,"% OA",
+    "\n","level 1:",OA_score_1*100,"% OA",
+    "\n","final score:",OA_score*100,"% OA")
