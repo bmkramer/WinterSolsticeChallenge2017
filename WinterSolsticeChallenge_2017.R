@@ -113,9 +113,9 @@ for (i in 1:crossrefCount){
 #count number of references
 citedWorkCount <- nrow(citedWorks)
 #subset DOIs of cited references (excluding NA's)
-df_step2 <- subset(citedWorks,!is.na(DOI))
+citedWorksWithDOIs <- subset(citedWorks,!is.na(DOI))
 #count number of DOIs
-count4 <- nrow(df_step2)
+count4 <- nrow(citedWorksWithDOIs)
 
 #STEP 3 Check OA availability with OADOI
 
@@ -168,7 +168,7 @@ colnames(df) = c("DOI", "is_oa", "host_type", "license", "version", "URL", "jour
 #fill dataframe
 for (i in 1:count4){
   tryCatch({
-  df <- rbind(df,getDataOADOI(df_step2$DOI[i]))
+  df <- rbind(df,getDataOADOI(citedWorksWithDOIs$DOI[i]))
   }, error=function(e){})
 }
 df_level_1 <- df
