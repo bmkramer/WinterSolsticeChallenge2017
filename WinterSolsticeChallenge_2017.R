@@ -158,7 +158,7 @@ for (i in 1:authorWorkCount){
 OA_level_0 <- authorOAinfo
 #subset is_oa = TRUE
 OA_level_0  <-subset(OA_level_0 , is_oa == TRUE)
-count5 <- nrow(OA_level_0)
+oaWorkCount <- nrow(OA_level_0)
 
 #check OA availability of each referenced DOI (level_1)
 
@@ -174,14 +174,14 @@ for (i in 1:citedDOICount){
 OA_level_1 <- citedOAinfo
 #subset is_oa = TRUE
 OA_level_1  <-subset(OA_level_1 , is_oa == TRUE)
-count6 <- nrow(OA_level_1)
+citedOACount <- nrow(OA_level_1)
 
 #STEP 4: calculate %OA for level_0 / level_1 / final
 
 # %OA for level_0 
-OA_level_0 <- round(count5/authorWorkCount,digits=2)
+OA_level_0 <- round(oaWorkCount/authorWorkCount,digits=2)
 # %OA for level_1
-OA_level_1 <- round(count6/citedDOICount,digits=2)
+OA_level_1 <- round(citedOACount/citedDOICount,digits=2)
 # %OA level final (counting level_0 as 1, level_1 as 0.5)
 OA_level <- round(((OA_level_0 + 0.5*(OA_level_1))/1.5),digits=2)
 
